@@ -410,10 +410,11 @@ function populateModal(player, guesses, results, score, dayNumber) {
   const shareText = [
     `Daily Sports NHL #${dayNumber}`,
     `Score: ${score} ${emojiStr}`,
+    ``,
     `Can you beat this?`,
-    reaction,
     ``,
     getPlayerLine(player.name, score),
+    ``,
     `Beat me: ${window.location.origin}`,
   ].join("\n");
 
