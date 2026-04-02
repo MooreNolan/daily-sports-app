@@ -356,7 +356,7 @@ function getPlayerLine(name, score) {
 function getEmoji(result) {
   if (result === "exact") return "🟩";
   if (result === "close") return "🟨";
-  return "⬜";
+  return "🟥";
 }
 
 // Lock sliders and show share bar (used after submit and on revisit)
