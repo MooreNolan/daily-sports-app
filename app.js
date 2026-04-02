@@ -343,6 +343,14 @@ function getReaction(score) {
   return "I have no idea what I'm doing.";
 }
 
+function getPlayerLine(name, score) {
+  if (score >= 90) return `${name} was light work.`;
+  if (score >= 75) return `Almost had ${name}.`;
+  if (score >= 50) return `${name} got me a bit.`;
+  if (score >= 25) return `${name} got me.`;
+  return `I had no shot with ${name}.`;
+}
+
 function getEmoji(result) {
   if (result === "exact") return "🟩";
   if (result === "close") return "🟨";
@@ -404,7 +412,7 @@ function populateModal(player, guesses, results, score, dayNumber) {
     `Score: ${score} ${emojiStr}`,
     reaction,
     ``,
-    `${player.name} got me.`,
+    getPlayerLine(player.name, score),
     `Beat me: ${window.location.origin}`,
   ].join("\n");
 
