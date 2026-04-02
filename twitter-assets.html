@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily StatLine — Twitter Assets</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    background: #09090f;
+    color: #e8e8f0;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  .container { max-width: 820px; margin: 0 auto; }
+  h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+  .sub { color: #55556a; font-size: 14px; margin-bottom: 48px; }
+  .section { margin-bottom: 56px; }
+  .section-label {
+    font-size: 11px; font-weight: 700; color: #55556a;
+    text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 16px;
+  }
+  .preview-wrap {
+    background: #0e0e16;
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .preview-wrap.banner-wrap { padding: 24px 16px; overflow-x: auto; }
+  .btn-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .btn {
+    padding: 11px 22px;
+    border-radius: 10px;
+    background: #6366f1;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+  .btn:active { transform: scale(0.96); }
+  .note { font-size: 11px; color: #44445a; margin-top: 10px; line-height: 1.5; }
+
+  /* ═══════════════════════════════════════
+     LOGO — 400x400 stat bars icon
+     ═══════════════════════════════════════ */
+  .logo-canvas {
+    width: 400px; height: 400px;
+    background: #08080e;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ═══════════════════════════════════════
+     BANNER — 750x250 (renders at 1500x500)
+     ═══════════════════════════════════════ */
+  .banner-canvas {
+    width: 750px; height: 250px;
+    background: #08080e;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .banner-glow-1 {
+    position: absolute; top: -100px; right: 80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(99,102,241,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .banner-glow-2 {
+    position: absolute; bottom: -120px; left: 200px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(129,140,248,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .banner-inner {
+    position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 32px;
+    padding: 0 60px;
+    width: 100%;
+  }
+  .banner-icon-wrap {
+    flex-shrink: 0;
+  }
+  .banner-text-block {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .banner-title {
+    font-size: 34px; font-weight: 800; color: #fff;
+    letter-spacing: 0.5px; line-height: 1.1;
+  }
+  .banner-edition {
+    font-size: 13px; font-weight: 700; color: #818cf8;
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+  .banner-sep {
+    width: 1px; height: 52px;
+    background: rgba(255,255,255,0.06);
+    flex-shrink: 0;
+    margin: 0 8px;
+  }
+  .banner-tagline {
+    font-size: 15px; color: #55556a;
+    font-weight: 500; font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Daily StatLine</h1>
+  <p class="sub">Brand assets for Twitter / X. Download as PNG below.</p>
+
+  <!-- ══════════ LOGO ══════════ -->
+  <div class="section">
+    <div class="section-label">Profile Logo &middot; 400 &times; 400</div>
+    <div class="preview-wrap">
+      <div class="logo-canvas" id="logo-canvas">
+        <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Glow backdrop -->
+          <defs>
+            <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#818cf8"/>
+              <stop offset="100%" stop-color="#6366f1"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="8" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="softGlow">
+              <feGaussianBlur stdDeviation="18" result="blur"/>
+              <feMerge><feMergeNode in="blur"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Ambient glow behind bars -->
+          <rect x="60" y="60" width="160" height="160" rx="20" fill="#6366f1" opacity="0.08" filter="url(#softGlow)"/>
+
+          <!-- 3 stat bars — different heights = data visualization feel -->
+          <!-- Bar 1 (short — goals) -->
+          <rect x="72" y="148" width="36" height="72" rx="6" fill="url(#barGrad)" filter="url(#glow)"/>
+          <!-- Bar 2 (tall — assists) -->
+          <rect x="122" y="88" width="36" height="132" rx="6" fill="url(#barGrad)" filter="url(#glow)"/>
+          <!-- Bar 3 (medium — points) -->
+          <rect x="172" y="118" width="36" height="102" rx="6" fill="url(#barGrad)" filter="url(#glow)"/>
+
+          <!-- Baseline -->
+          <line x1="60" y1="228" x2="220" y2="228" stroke="#6366f1" stroke-width="2" stroke-linecap="round" opacity="0.25"/>
+
+          <!-- Wordmark below bars -->
+          <text x="140" y="262" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff" font-family="-apple-system, system-ui, sans-serif" letter-spacing="4" opacity="0.9">DAILY STATLINE</text>
+        </svg>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="downloadLogo()">Download Logo PNG</button>
+    </div>
+    <p class="note">400x400. Three stat bars = goals, assists, points. Stays sharp in Twitter's circle crop — bars are centered. The glow catches the eye at small sizes.</p>
+  </div>
+
+  <!-- ══════════ BANNER ══════════ -->
+  <div class="section">
+    <div class="section-label">Header Banner &middot; 1500 &times; 500</div>
+    <div class="preview-wrap banner-wrap">
+      <div class="banner-canvas" id="banner-canvas">
+        <div class="banner-glow-1"></div>
+        <div class="banner-glow-2"></div>
+        <div class="banner-inner">
+          <!-- Stat bars icon (smaller) -->
+          <div class="banner-icon-wrap">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="bBarGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#818cf8"/>
+                  <stop offset="100%" stop-color="#6366f1"/>
+                </linearGradient>
+                <filter id="bGlow">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <rect x="12" y="38" width="12" height="22" rx="3" fill="url(#bBarGrad)" filter="url(#bGlow)"/>
+              <rect x="30" y="18" width="12" height="42" rx="3" fill="url(#bBarGrad)" filter="url(#bGlow)"/>
+              <rect x="48" y="28" width="12" height="32" rx="3" fill="url(#bBarGrad)" filter="url(#bGlow)"/>
+              <line x1="8" y1="64" x2="64" y2="64" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" opacity="0.2"/>
+            </svg>
+          </div>
+
+          <div class="banner-text-block">
+            <div class="banner-title">Daily StatLine</div>
+            <div class="banner-edition">NHL Edition</div>
+          </div>
+
+          <div class="banner-sep"></div>
+
+          <div class="banner-tagline">Guess the stat line.</div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="downloadBanner()">Download Banner PNG</button>
+    </div>
+    <p class="note">1500x500. Left side has breathing room for profile icon overlap. Subtle ambient glow keeps it feeling alive without clutter.</p>
+  </div>
+</div>
+
+<script>
+function drawBarGradient(ctx, x, y, w, h, r) {
+  // Rounded rect with gradient fill
+  const grad = ctx.createLinearGradient(x, y, x, y + h);
+  grad.addColorStop(0, '#818cf8');
+  grad.addColorStop(1, '#6366f1');
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function drawGlow(ctx, x, y, w, h, blur) {
+  ctx.save();
+  ctx.shadowColor = 'rgba(99,102,241,0.5)';
+  ctx.shadowBlur = blur;
+  drawBarGradient(ctx, x, y, w, h, 6);
+  ctx.restore();
+}
+
+function downloadLogo() {
+  const S = 400;
+  const canvas = document.createElement('canvas');
+  canvas.width = S; canvas.height = S;
+  const ctx = canvas.getContext('2d');
+
+  // Background
+  ctx.fillStyle = '#08080e';
+  ctx.fillRect(0, 0, S, S);
+
+  // Ambient glow
+  const ag = ctx.createRadialGradient(S/2, S/2 - 20, 10, S/2, S/2 - 20, 120);
+  ag.addColorStop(0, 'rgba(99,102,241,0.10)');
+  ag.addColorStop(1, 'transparent');
+  ctx.fillStyle = ag;
+  ctx.fillRect(0, 0, S, S);
+
+  // Bar dimensions (centered)
+  const barW = 36;
+  const gap = 14;
+  const totalW = barW * 3 + gap * 2;
+  const startX = (S - totalW) / 2;
+  const baseY = 248;
+
+  // Bar 1 (short — goals)
+  drawGlow(ctx, startX, baseY - 72, barW, 72, 16);
+  // Bar 2 (tall — assists)
+  drawGlow(ctx, startX + barW + gap, baseY - 132, barW, 132, 16);
+  // Bar 3 (medium — points)
+  drawGlow(ctx, startX + (barW + gap) * 2, baseY - 102, barW, 102, 16);
+
+  // Baseline
+  ctx.strokeStyle = 'rgba(99,102,241,0.25)';
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.moveTo(startX - 8, baseY + 6);
+  ctx.lineTo(startX + totalW + 8, baseY + 6);
+  ctx.stroke();
+
+  // Wordmark
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  ctx.font = '800 16px -apple-system, BlinkMacSystemFont, system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.letterSpacing = '4px';
+  ctx.fillText('D A I L Y   S T A T L I N E', S/2, 290);
+
+  // Download
+  const link = document.createElement('a');
+  link.download = 'daily-statline-logo.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function downloadBanner() {
+  const W = 1500, H = 500;
+  const canvas = document.createElement('canvas');
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+
+  // Background
+  ctx.fillStyle = '#08080e';
+  ctx.fillRect(0, 0, W, H);
+
+  // Ambient glows
+  const g1 = ctx.createRadialGradient(W * 0.7, 80, 10, W * 0.7, 80, 300);
+  g1.addColorStop(0, 'rgba(99,102,241,0.08)');
+  g1.addColorStop(1, 'transparent');
+  ctx.fillStyle = g1;
+  ctx.fillRect(0, 0, W, H);
+
+  const g2 = ctx.createRadialGradient(400, H - 60, 10, 400, H - 60, 250);
+  g2.addColorStop(0, 'rgba(129,140,248,0.05)');
+  g2.addColorStop(1, 'transparent');
+  ctx.fillStyle = g2;
+  ctx.fillRect(0, 0, W, H);
+
+  // Stat bars icon (left area, offset right for profile overlap)
+  const iconX = 340;
+  const iconBaseY = H/2 + 30;
+  const bw = 20, bgap = 8;
+
+  drawGlow(ctx, iconX, iconBaseY - 44, bw, 44, 8);
+  drawGlow(ctx, iconX + bw + bgap, iconBaseY - 84, bw, 84, 8);
+  drawGlow(ctx, iconX + (bw + bgap) * 2, iconBaseY - 64, bw, 64, 8);
+
+  // Baseline under icon
+  ctx.strokeStyle = 'rgba(99,102,241,0.2)';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(iconX - 4, iconBaseY + 4);
+  ctx.lineTo(iconX + bw * 3 + bgap * 2 + 4, iconBaseY + 4);
+  ctx.stroke();
+
+  // Title text
+  const textX = iconX + 130;
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '800 54px -apple-system, BlinkMacSystemFont, system-ui, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('Daily StatLine', textX, H/2 - 14);
+
+  // Edition label
+  ctx.fillStyle = '#818cf8';
+  ctx.font = '700 18px -apple-system, BlinkMacSystemFont, system-ui, sans-serif';
+  ctx.fillText('N H L   E D I T I O N', textX + 4, H/2 + 28);
+
+  // Divider
+  const divX = textX + 380;
+  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(divX, H/2 - 40);
+  ctx.lineTo(divX, H/2 + 40);
+  ctx.stroke();
+
+  // Tagline
+  ctx.fillStyle = '#55556a';
+  ctx.font = 'italic 500 22px -apple-system, BlinkMacSystemFont, system-ui, sans-serif';
+  ctx.fillText('Guess the stat line.', divX + 32, H/2);
+
+  // Download
+  const link = document.createElement('a');
+  link.download = 'daily-statline-banner.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+</script>
+</body>
+</html>

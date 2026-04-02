@@ -236,7 +236,7 @@ function init() {
     const data = JSON.parse(lastResult || "null");
     welcomeNew.classList.add("hidden");
     welcomePlayed.classList.remove("hidden");
-    welcomePlayedLabel.textContent = `Daily Sports NHL #${dayNumber}`;
+    welcomePlayedLabel.textContent = `Daily StatLine #${dayNumber}`;
     if (data && data.score != null) {
       welcomeScore.textContent = `${data.score} / 100`;
       welcomeScoreLabel.textContent = getScoreLabel(data.score);
@@ -247,7 +247,7 @@ function init() {
     // State 2: Returning user, not played today — daily challenge
     welcomeNew.classList.add("hidden");
     welcomeReturning.classList.remove("hidden");
-    welcomeDailyLabel.textContent = `Daily Sports NHL #${dayNumber}`;
+    welcomeDailyLabel.textContent = `Daily StatLine #${dayNumber}`;
     welcomePlayer.textContent = player.name;
   }
   // else: State 1 — first-time user, full onboarding (default HTML state)
@@ -268,6 +268,8 @@ function submitGuess() {
 
   const results = calculateResults(player, guesses);
   const score = calculateScore(player, guesses);
+
+  console.log("PLAYED");
 
   // Save
   const dateKey = getGameDateKey();
@@ -408,7 +410,7 @@ function populateModal(player, guesses, results, score, dayNumber) {
 
   // Build share text
   const shareText = [
-    `Daily Sports NHL #${dayNumber}`,
+    `Daily StatLine #${dayNumber}`,
     `Score: ${score} ${emojiStr}`,
     ``,
     `Can you beat this?`,

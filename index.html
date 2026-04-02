@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0a0a0f">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>Daily Sports — NHL</title>
+  <title>Daily StatLine — NHL Edition</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,15 +16,17 @@
       <div class="modal-content welcome-content">
         <div class="welcome-logo">
           <svg class="brand-logo" viewBox="0 0 36 36" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
-            <rect width="36" height="36" rx="8" fill="currentColor" class="logo-bg"/>
-            <text x="18" y="24" text-anchor="middle" font-size="16" font-weight="800" font-family="-apple-system, system-ui, sans-serif" fill="currentColor" class="logo-text">DS</text>
+            <rect width="36" height="36" rx="8" fill="var(--accent)" opacity="0.15"/>
+            <rect x="8" y="18" width="5" height="11" rx="1.5" fill="var(--accent)"/>
+            <rect x="15.5" y="11" width="5" height="18" rx="1.5" fill="var(--accent)"/>
+            <rect x="23" y="14" width="5" height="15" rx="1.5" fill="var(--accent)"/>
           </svg>
         </div>
 
         <!-- First-time content -->
         <div id="welcome-new">
-          <div class="welcome-brand">DAILY SPORTS</div>
-          <div class="welcome-title">NHL StatLine</div>
+          <div class="welcome-brand">DAILY STATLINE</div>
+          <div class="welcome-title">NHL Edition</div>
           <p class="intro-tagline">Guess an NHL player's 2024-25 season stats in under 30 seconds.</p>
           <p class="intro-supporting">Compare your score with friends. No signup needed.</p>
           <div class="how-it-works">
@@ -36,14 +38,14 @@
 
         <!-- Returning user (not played today) -->
         <div id="welcome-returning" class="hidden">
-          <div class="welcome-daily-label" id="welcome-daily-label">Daily Sports NHL #457</div>
+          <div class="welcome-daily-label" id="welcome-daily-label">Daily StatLine #457</div>
           <div class="welcome-player" id="welcome-player"></div>
           <p class="welcome-prompt">How well do you know NHL stats?</p>
         </div>
 
         <!-- Already played today -->
         <div id="welcome-played" class="hidden">
-          <div class="welcome-daily-label" id="welcome-played-label">Daily Sports NHL #457</div>
+          <div class="welcome-daily-label" id="welcome-played-label">Daily StatLine #457</div>
           <p class="welcome-played-msg">You already played today.</p>
           <div class="welcome-score" id="welcome-score"></div>
           <div class="welcome-score-sub" id="welcome-score-label"></div>
@@ -57,12 +59,14 @@
       <div class="game-header">
         <div class="brand-left">
           <svg class="brand-logo brand-logo-sm" viewBox="0 0 36 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-            <rect width="36" height="36" rx="8" fill="currentColor" class="logo-bg"/>
-            <text x="18" y="24" text-anchor="middle" font-size="16" font-weight="800" font-family="-apple-system, system-ui, sans-serif" fill="currentColor" class="logo-text">DS</text>
+            <rect width="36" height="36" rx="8" fill="var(--accent)" opacity="0.15"/>
+            <rect x="8" y="18" width="5" height="11" rx="1.5" fill="var(--accent)"/>
+            <rect x="15.5" y="11" width="5" height="18" rx="1.5" fill="var(--accent)"/>
+            <rect x="23" y="14" width="5" height="15" rx="1.5" fill="var(--accent)"/>
           </svg>
           <div class="brand-text">
-            <h1>DAILY SPORTS</h1>
-            <div class="subtitle subtitle-sm">NHL StatLine</div>
+            <h1>DAILY STATLINE</h1>
+            <div class="subtitle subtitle-sm">NHL Edition</div>
           </div>
         </div>
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
