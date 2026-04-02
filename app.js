@@ -223,7 +223,7 @@ function init() {
   playerNameEl.textContent = player.name;
   positionBadge.textContent = player.position;
   teamBadge.textContent = player.team;
-  seasonLabel.textContent = "2024\u201325 Season";
+  seasonLabel.textContent = "2024\u201325 Season Stats";
 
   // 3-state detection
   const lastPlayed = localStorage.getItem("ds_lastPlayed");
