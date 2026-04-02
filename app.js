@@ -409,15 +409,25 @@ function populateModal(player, guesses, results, score, dayNumber) {
   document.getElementById("result-reaction").textContent = reaction;
 
   // Build share text
+  const gDiff = Math.abs(guesses.goals - player.goals);
+  const aDiff = Math.abs(guesses.assists - player.assists);
+  const pDiff = Math.abs(guessedPoints - player.points);
+
   const shareText = [
-    `Daily StatLine #${dayNumber}`,
+    `Daily StatLine NHL #${dayNumber}`,
+    ``,
+    player.name,
+    ``,
+    `G: +${gDiff}`,
+    `A: +${aDiff}`,
+    `P: +${pDiff}`,
+    ``,
     `Score: ${score} ${emojiStr}`,
     ``,
+    reaction,
+    ``,
     `Can you beat this?`,
-    ``,
-    getPlayerLine(player.name, score),
-    ``,
-    `Beat me: ${window.location.origin}`,
+    window.location.origin,
   ].join("\n");
 
   function copyAndFlash(msgEl) {
