@@ -338,11 +338,10 @@ function getScoreLabel(score) {
 }
 
 function getReaction(score) {
-  if (score >= 90) return "Too easy.";
-  if (score >= 75) return "Almost had it.";
-  if (score >= 50) return "Not bad.";
-  if (score >= 25) return "That was tougher than I thought.";
-  return "I have no idea what I'm doing.";
+  if (score >= 90) return "You're better than most fans.";
+  if (score >= 75) return "Almost perfect.";
+  if (score >= 60) return "Solid... but beatable.";
+  return "This one got you.";
 }
 
 function getPlayerLine(name, score) {
@@ -510,11 +509,29 @@ modalClose.addEventListener("click", closeModal);
 modalOverlay.addEventListener("click", closeModal);
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    if (!resultModal.classList.contains("hidden")) closeModal();
+    if (!scoringModal.classList.contains("hidden")) closeScoring();
+    else if (!resultModal.classList.contains("hidden")) closeModal();
     else if (!welcomeModal.classList.contains("hidden")) closeWelcome();
   }
 });
 viewResultBtn.addEventListener("click", openModal);
+
+// Scoring legend modal
+const scoringModal = document.getElementById("scoring-modal");
+const scoringOverlay = document.getElementById("scoring-overlay");
+const scoringClose = document.getElementById("scoring-close");
+const scoringInfoBtn = document.getElementById("scoring-info-btn");
+
+function openScoring() {
+  scoringModal.classList.remove("hidden");
+}
+function closeScoring() {
+  scoringModal.classList.add("hidden");
+}
+
+scoringInfoBtn.addEventListener("click", openScoring);
+scoringClose.addEventListener("click", closeScoring);
+scoringOverlay.addEventListener("click", closeScoring);
 
 // Theme toggle
 document.getElementById("theme-toggle").addEventListener("click", () => {

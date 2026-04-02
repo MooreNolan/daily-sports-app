@@ -151,15 +151,38 @@
         <div class="player-reveal" id="player-reveal"></div>
         <div class="result-section-title">Your Guess vs Actual</div>
         <div class="result-stats" id="result-stats"></div>
-        <div class="result-emoji" id="result-emoji"></div>
+        <div class="result-emoji-row">
+          <div class="result-emoji" id="result-emoji"></div>
+          <button class="scoring-info-btn" id="scoring-info-btn" aria-label="How scoring works">&#9432;</button>
+        </div>
         <div class="result-score" id="result-score"></div>
         <div class="result-score-label" id="result-score-label"></div>
         <div class="result-reaction" id="result-reaction"></div>
-        <div class="result-context">Most players score between 60–80</div>
-        <button id="copy-btn" class="btn-primary modal-btn">Copy Result</button>
+        <div class="share-prompt">Think your friends can beat this?</div>
+        <button id="copy-btn" class="btn-primary modal-btn">Share Result</button>
         <button id="challenge-btn" class="btn-secondary modal-btn">Challenge a Friend</button>
         <div class="copied-msg hidden" id="modal-copied-msg">Copied to clipboard</div>
         <div class="challenge-msg hidden" id="challenge-msg">Copied — now send it to your group chat</div>
+      </div>
+    </div>
+    <div id="scoring-modal" class="hidden">
+      <div class="modal-overlay" id="scoring-overlay"></div>
+      <div class="modal-content scoring-modal-content">
+        <button class="modal-close" id="scoring-close">&times;</button>
+        <div class="scoring-title">How scoring works</div>
+        <div class="scoring-section">
+          <div class="scoring-label">Goals (first square)</div>
+          <div class="scoring-row"><span>🟩</span> Exact</div>
+          <div class="scoring-row"><span>🟨</span> Close (1-3 off)</div>
+          <div class="scoring-row"><span>🟥</span> Off (4+)</div>
+        </div>
+        <div class="scoring-section">
+          <div class="scoring-label">Assists (second square)</div>
+          <div class="scoring-row"><span>🟩</span> Exact</div>
+          <div class="scoring-row"><span>🟨</span> Close (1-5 off)</div>
+          <div class="scoring-row"><span>🟥</span> Off (6+)</div>
+        </div>
+        <div class="scoring-note">Points are derived (Goals + Assists)</div>
       </div>
     </div>
   </div>
