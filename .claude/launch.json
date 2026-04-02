@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "daily-sports",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/nolanmoore/Desktop/Daily Sports"],
+      "port": 3001,
+      "autoPort": true
+    }
+  ]
+}
