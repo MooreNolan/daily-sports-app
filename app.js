@@ -1,3 +1,21 @@
+// ── Supabase event tracking ──
+// Replace these with your actual Supabase project values
+const SUPABASE_URL = "https://YOUR_PROJECT.supabase.co";
+const SUPABASE_ANON_KEY = "YOUR_ANON_KEY";
+
+function trackEvent(eventType, dayNumber, score) {
+  if (SUPABASE_URL.includes("YOUR_PROJECT")) return; // skip if not configured
+  fetch(`${SUPABASE_URL}/rest/v1/events`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_ANON_KEY,
+      "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+    },
+    body: JSON.stringify({ event_type: eventType, day_number: dayNumber, score: score }),
+  }).catch(() => {}); // fire and forget — never block gameplay
+}
+
 // Theme — apply saved preference immediately to avoid flash
 (function() {
   const saved = localStorage.getItem("ds_theme");
@@ -270,6 +288,7 @@ function submitGuess() {
   const score = calculateScore(player, guesses);
 
   console.log("PLAYED");
+  trackEvent("played", dayNumber, score);
 
   // Save
   const dateKey = getGameDateKey();
@@ -434,6 +453,7 @@ function populateModal(player, guesses, results, score, dayNumber) {
       msgEl.classList.remove("hidden");
       setTimeout(() => msgEl.classList.add("hidden"), 2000);
     });
+    trackEvent("shared", dayNumber, score);
   }
 
   const challengeMsg = document.getElementById("challenge-msg");
